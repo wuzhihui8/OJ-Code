@@ -8,28 +8,30 @@
 
 using namespace std;
 
-int n;
-int dist[102][102];
-int sum_dist;
-
-int row, col;
-char mave[51][51];
-int arr_vertex[51][51];
-
-int path[51][51]; 
-
+#define MAX_MAVE_SIZE 54
 const int idx_x[4] = {0, -1, 0, 1};
 const int idx_y[4] = {-1, 0, 1, 0};
+
+const int maxInt = numeric_limits<int>::max();
+
+//Prime Data
+const int MAX_N = 54 * 54;
+int n;
+int dist[MAX_N][MAX_N];
+int sum_dist;
+
+//BFS Data
+int row, col;
+char mave[MAX_MAVE_SIZE][MAX_MAVE_SIZE];
+int path[MAX_MAVE_SIZE][MAX_MAVE_SIZE];
+//map<int, int> map_vertex;
+int arr_vertex[54][54];
 
 struct Point
 {
 	int i;
 	int j;
 };
-
-const int MAX_N = 54 * 54;
-const int maxInt = numeric_limits<int>::max();
-
 
 int bfs()
 {
@@ -135,14 +137,15 @@ int main()
 	int t;
 	scanf("%d", &t);
 	
-	for(int i = 0; i < t ;++t)
+	char ch;
+	for(int i = 0; i < t; ++i)
 	{
 		memset(arr_vertex, 0, sizeof(arr_vertex));
 		
 		scanf("%d%d", &col, &row);
-		char tmp[51];
-		gets(tmp);
 		
+		char ches[51];
+		gets(ches); //去除多余的空格
 		
 		n = 0;
 		for(int j = 0; j < row; ++j)
@@ -156,11 +159,22 @@ int main()
 				}
 			}
 		}
+		
 		bfs();
+		
+//		for(int j = 0; j < n; ++j)
+//		{
+//			for(int k = 0; k < n; ++k)
+//			{
+//				printf("%d ", dist[j][k]);
+//			}
+//			printf("\n");
+//		}
 
 		prime();
 		
 		printf("%d\n", sum_dist);
 	}
+	
 	return 0;
 }
