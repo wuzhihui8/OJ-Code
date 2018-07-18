@@ -10,7 +10,7 @@ int ticket[100002];
 
 int main()
 {
-	freopen("input.txt", "r", stdin);
+	//freopen("input.txt", "r", stdin);
 	
 	int i, j, tmp;
 	int n, k;
@@ -44,7 +44,7 @@ int main()
 	
 	printf("%ld\n", sum); 
 	
-	fclose(stdin);
+	//fclose(stdin);
 	
 	return 0;
 }
